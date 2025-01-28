@@ -1,3 +1,11 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+@import '@fontsource-variable/jetbrains-mono';
+@import '@fontsource-variable/montserrat';
 
 @custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: jetbrains-mono, sans-serif;
+  --font-mono: montserrat, monospace;
+}

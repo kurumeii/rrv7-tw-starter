@@ -1,3 +1,4 @@
+Dismissable
 fontsource
 isbot
 remixicon

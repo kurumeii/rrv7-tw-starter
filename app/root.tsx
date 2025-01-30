@@ -11,7 +11,7 @@ import {
 
 import { RouterProvider } from "react-aria-components"
 import { PreventFlashOnWrongTheme, ThemeProvider } from "remix-themes"
-import { themeResolver } from "server/themes"
+import { themeResolver } from "server/themes.server"
 import type { Route } from "./+types/root"
 import stylesheet from "./app.css?url"
 

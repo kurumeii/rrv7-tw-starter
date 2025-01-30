@@ -6,7 +6,7 @@
     "useIgnoreFile": false
   },
   "files": {
-    "include": ["app/**/*.ts", "app/**/*.tsx"],
+    "include": ["app/**/*.ts", "app/**/*.tsx", "app/**/*.css"],
     "ignoreUnknown": false,
     "ignore": [".react-router"]
   },
@@ -36,13 +36,19 @@
           "level": "warn",
           "options": {
             "attributes": ["classList", "className"],
-            "functions": ["cn", "tv", "cva"]
+            "functions": ["cn", "tv", "cva", "cx"]
           }
         }
       },
       "style": {
         "noVar": "warn",
-        "useConsistentArrayType": "error",
+        "useConsistentArrayType": {
+          "fix": "safe",
+          "level": "warn",
+          "options": {
+            "syntax": "generic"
+          }
+        },
         "useNodejsImportProtocol": "error"
       }
     }
@@ -52,6 +58,17 @@
       "semicolons": "asNeeded",
       "trailingCommas": "es5",
       "jsxQuoteStyle": "single"
+    }
+  },
+  "css": {
+    "formatter": {
+      "enabled": true
+    },
+    "linter": {
+      "enabled": true
+    },
+    "assists": {
+      "enabled": true
     }
   }
 }

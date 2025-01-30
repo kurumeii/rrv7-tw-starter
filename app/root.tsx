@@ -5,8 +5,11 @@ import {
 	Scripts,
 	ScrollRestoration,
 	isRouteErrorResponse,
+	useHref,
+	useNavigate,
 } from "react-router"
 
+import { RouterProvider } from "react-aria-components"
 import { PreventFlashOnWrongTheme, ThemeProvider } from "remix-themes"
 import { themeResolver } from "server/themes"
 import type { Route } from "./+types/root"
@@ -23,6 +26,7 @@ export const loader = async ({ request }: Route.LoaderArgs) => {
 
 export default function App({ loaderData }: Route.ComponentProps) {
 	const { theme } = loaderData
+	const navigate = useNavigate()
 	return (
 		<ThemeProvider
 			disableTransitionOnThemeChange
@@ -38,7 +42,9 @@ export default function App({ loaderData }: Route.ComponentProps) {
 					<PreventFlashOnWrongTheme ssrTheme={Boolean(theme)} />
 				</head>
 				<body>
-					<Outlet />
+					<RouterProvider navigate={navigate} useHref={useHref}>
+						<Outlet />
+					</RouterProvider>
 					<ScrollRestoration />
 					<Scripts />
 				</body>

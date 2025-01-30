@@ -16,6 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "server/*": ["./app/.server/*"],
+      "configs/*": ["./app/configs/*"],
+      "ui": ["./app/components/ui"],
       "~/*": ["./app/*"]
     },
     "esModuleInterop": true,

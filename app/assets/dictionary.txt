@@ -1,2 +1,3 @@
 fontsource
 isbot
+remixicon

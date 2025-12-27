@@ -1,74 +1,80 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
-  },
-  "files": {
-    "include": ["app/**/*.ts", "app/**/*.tsx", "app/**/*.css"],
-    "ignoreUnknown": false,
-    "ignore": [".react-router"]
-  },
-  "formatter": {
-    "enabled": true,
-    "indentStyle": "tab"
-  },
-  "organizeImports": {
-    "enabled": true
-  },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true,
-      "complexity": {
-        "noForEach": "off"
-      },
-      "correctness": {
-        "noUnusedImports": "warn",
-        "noUnusedVariables": "warn",
-        "useHookAtTopLevel": "warn",
-        "noChildrenProp": "info"
-      },
-      "nursery": {
-        "useSortedClasses": {
-          "fix": "safe",
-          "level": "warn",
-          "options": {
-            "attributes": ["classList", "className"],
-            "functions": ["cn", "tv", "cva", "cx"]
-          }
-        }
-      },
-      "style": {
-        "noVar": "warn",
-        "useConsistentArrayType": {
-          "fix": "safe",
-          "level": "warn",
-          "options": {
-            "syntax": "generic"
-          }
-        },
-        "useNodejsImportProtocol": "error"
-      }
-    }
-  },
-  "javascript": {
-    "formatter": {
-      "semicolons": "asNeeded",
-      "trailingCommas": "es5",
-      "jsxQuoteStyle": "single"
-    }
-  },
-  "css": {
-    "formatter": {
-      "enabled": true
-    },
-    "linter": {
-      "enabled": true
-    },
-    "assists": {
-      "enabled": true
-    }
-  }
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"files": {
+		"includes": [
+			"**/app/**/*.ts",
+			"**/app/**/*.tsx",
+			"**/app/**/*.css",
+			"!**/.react-router"
+		],
+		"ignoreUnknown": false
+	},
+	"formatter": {
+		"enabled": true,
+		"indentStyle": "tab"
+	},
+	"assist": { "actions": { "source": { "organizeImports": "on" } } },
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"complexity": {
+				"noForEach": "off"
+			},
+			"correctness": {
+				"noUnusedImports": "warn",
+				"noUnusedVariables": "warn",
+				"useHookAtTopLevel": "warn",
+				"noChildrenProp": "info"
+			},
+			"nursery": {
+				"useSortedClasses": {
+					"fix": "safe",
+					"level": "warn",
+					"options": {
+						"attributes": ["classList", "className"],
+						"functions": ["cn", "tv", "cva", "cx"]
+					}
+				}
+			},
+			"style": {
+				"useConsistentArrayType": {
+					"fix": "safe",
+					"level": "warn",
+					"options": {
+						"syntax": "generic"
+					}
+				},
+				"useNodejsImportProtocol": "error"
+			},
+			"suspicious": {
+				"noVar": "warn"
+			}
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"semicolons": "asNeeded",
+			"trailingCommas": "es5",
+			"jsxQuoteStyle": "single"
+		}
+	},
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		},
+		"formatter": {
+			"enabled": true
+		},
+		"linter": {
+			"enabled": true
+		},
+		"assist": {
+			"enabled": true
+		}
+	}
 }

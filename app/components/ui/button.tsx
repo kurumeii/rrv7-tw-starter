@@ -1,4 +1,4 @@
-import { type VariantProps, compose, cva, cx } from "configs/cva.config"
+import { compose, cva, cx, type VariantProps } from "configs/cva.config"
 import type { ReactNode, Ref } from "react"
 import {
 	Button as ButtonPrimitive,
@@ -13,6 +13,7 @@ const _buttonStyles = cva({
 		"rac-disabled:pointer-events-none rac-pressed:scale-95 cursor-pointer rac-disabled:cursor-default select-none rac-disabled:opacity-50",
 		"*:data-[slot=icon]:pointer-events-none *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0",
 		"transition duration-300 ease-in-out",
+		"rac-pending:cursor-wait",
 	],
 	variants: {
 		colors: {
@@ -181,7 +182,9 @@ const Button = (props: ButtonProps) => {
 		>
 			{(value) => (
 				<>
-					{leftIcon && !rest.isPending ? (
+					{rest.isPending ? (
+						<Loader />
+					) : leftIcon && !rest.isPending ? (
 						<span slot='icon'>{leftIcon}</span>
 					) : null}
 					{typeof rest.children === "function"
@@ -189,9 +192,6 @@ const Button = (props: ButtonProps) => {
 						: rest.children}
 					{rightIcon && !rest.isPending ? (
 						<span slot='icon'>{rightIcon}</span>
-					) : null}
-					{rest.isPending ? (
-						<Loader className='-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2' />
 					) : null}
 				</>
 			)}

@@ -1,5 +1,5 @@
 import { RiCloseLine } from "@remixicon/react"
-import { type VariantProps, cva, cx } from "configs/cva.config"
+import { cva, cx, type VariantProps } from "configs/cva.config"
 import {
 	Button as AriaButton,
 	Dialog as AriaDialog,
@@ -28,6 +28,9 @@ const sheetVariants = cva({
 			right:
 				"rac-entering:slide-in-from-right rac-exiting:slide-out-to-right inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm",
 		},
+	},
+	defaultVariants: {
+		side: "top",
 	},
 })
 const Dialog = AriaDialog
@@ -69,7 +72,7 @@ const DialogContent = ({
 			cx(
 				side
 					? sheetVariants({ side, className: "h-full p-6" })
-					: "-translate-x-1/2 -translate-y-1/2 rac-entering:fade-in-0 rac-exiting:fade-out-0 rac-entering:zoom-in-95 rac-exiting:zoom-out-95 rac-entering:slide-in-from-left-1/2 rac-entering:slide-in-from-top-[48%] rac-exiting:slide-out-to-left-1/2 rac-exiting:slide-out-to-top-[48%] fixed top-1/2 left-[50vw] z-50 w-full max-w-lg rac-entering:animate-in rac-exiting:animate-out border bg-background p-6 shadow-lg duration-200 rac-exiting:duration-300 sm:rounded-lg md:w-full",
+					: "rac-entering:fade-in-0 rac-exiting:fade-out-0 rac-entering:zoom-in-95 rac-exiting:zoom-out-95 rac-entering:slide-in-from-left-1/2 rac-entering:slide-in-from-top-[48%] rac-exiting:slide-out-to-left-1/2 rac-exiting:slide-out-to-top-[48%] fixed top-1/2 left-[50vw] z-50 w-full max-w-lg -translate-x-1/2 -translate-y-1/2 rac-entering:animate-in rac-exiting:animate-out border bg-background p-6 shadow-lg duration-200 rac-exiting:duration-300 sm:rounded-lg md:w-full",
 				className
 			)
 		)}
@@ -85,7 +88,7 @@ const DialogContent = ({
 					{closeButton && (
 						<AriaButton
 							onPress={renderProps.close}
-							className='absolute top-4 right-4 rounded-sm rac-entering:bg-accent rac-entering:text-muted-foreground opacity-70 ring-offset-background transition-opacity data-[disabled]:pointer-events-none data-[hovered]:opacity-100 data-[focused]:outline-none data-[focused]:ring-2 data-[focused]:ring-ring data-[focused]:ring-offset-2'
+							className='rac-disabled:pointer-events-none absolute top-4 right-4 rounded-sm rac-entering:bg-accent rac-entering:text-muted-foreground opacity-70 rac-hover:opacity-100 rac-focus:outline-none rac-focus:ring-2 rac-focus:ring-ring rac-focus:ring-offset-2 ring-offset-background transition-opacity'
 						>
 							<RiCloseLine />
 							<span className='sr-only'>Close</span>

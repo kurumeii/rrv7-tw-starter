@@ -6,9 +6,9 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "ui"
-import type { Route } from "./+types/_home._index"
+import type { Route } from "./+types/home"
 
-export function meta(_: Route.MetaArgs) {
+export function meta(): Route.MetaDescriptors {
 	return [
 		{ title: "New React Router App" },
 		{ name: "description", content: "Welcome to React Router!" },
@@ -34,7 +34,7 @@ export default function Home() {
 					<DialogTrigger>
 						<Button>Open dialog</Button>
 						<DialogOverlay>
-							<DialogContent className='sm:max-w-[425px]'>
+							<DialogContent className='sm:max-w-106.25'>
 								<DialogHeader>
 									<DialogTitle>Sign up</DialogTitle>
 								</DialogHeader>

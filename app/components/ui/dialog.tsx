@@ -1,5 +1,5 @@
 import { RiCloseLine } from "@remixicon/react"
-import { type VariantProps, cva, cx } from "configs/cva.config"
+import { cva, cx, type VariantProps } from "configs/cva.config"
 import {
 	Button as AriaButton,
 	Dialog as AriaDialog,
@@ -69,7 +69,7 @@ const DialogContent = ({
 			cx(
 				side
 					? sheetVariants({ side, className: "h-full p-6" })
-					: "-translate-x-1/2 -translate-y-1/2 rac-entering:fade-in-0 rac-exiting:fade-out-0 rac-entering:zoom-in-95 rac-exiting:zoom-out-95 rac-entering:slide-in-from-left-1/2 rac-entering:slide-in-from-top-[48%] rac-exiting:slide-out-to-left-1/2 rac-exiting:slide-out-to-top-[48%] fixed top-1/2 left-[50vw] z-50 w-full max-w-lg rac-entering:animate-in rac-exiting:animate-out border bg-background p-6 shadow-lg duration-200 rac-exiting:duration-300 sm:rounded-lg md:w-full",
+					: "rac-entering:fade-in-0 rac-exiting:fade-out-0 rac-entering:zoom-in-95 rac-exiting:zoom-out-95 rac-entering:slide-in-from-left-1/2 rac-entering:slide-in-from-top-[48%] rac-exiting:slide-out-to-left-1/2 rac-exiting:slide-out-to-top-[48%] fixed top-1/2 left-[50vw] z-50 w-full max-w-lg -translate-x-1/2 -translate-y-1/2 rac-entering:animate-in rac-exiting:animate-out border bg-background p-6 shadow-lg duration-200 rac-exiting:duration-300 sm:rounded-lg md:w-full",
 				className
 			)
 		)}

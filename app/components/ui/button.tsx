@@ -1,4 +1,4 @@
-import { type VariantProps, compose, cva, cx } from "configs/cva.config"
+import { compose, cva, cx, type VariantProps } from "configs/cva.config"
 import type { ReactNode, Ref } from "react"
 import {
 	Button as ButtonPrimitive,
@@ -191,7 +191,7 @@ const Button = (props: ButtonProps) => {
 						<span slot='icon'>{rightIcon}</span>
 					) : null}
 					{rest.isPending ? (
-						<Loader className='-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2' />
+						<Loader className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' />
 					) : null}
 				</>
 			)}

@@ -1,29 +1,28 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
     "useIgnoreFile": true
   },
   "files": {
-    "include": ["app/**/*.ts", "app/**/*.tsx", "app/**/*.css"],
-    "ignoreUnknown": false,
-    "ignore": [".react-router"]
+    "includes": [
+      "**/app/**/*.ts",
+      "**/app/**/*.tsx",
+      "**/app/**/*.css",
+      "!**/.react-router"
+    ],
+    "ignoreUnknown": false
   },
   "formatter": {
     "enabled": true,
     "indentStyle": "tab"
   },
-  "organizeImports": {
-    "enabled": true
-  },
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": true,
-      "complexity": {
-        "noForEach": "off"
-      },
       "correctness": {
         "noUnusedImports": "warn",
         "noUnusedVariables": "warn",
@@ -41,15 +40,13 @@
         }
       },
       "style": {
-        "noVar": "warn",
         "useConsistentArrayType": {
           "fix": "safe",
           "level": "warn",
           "options": {
             "syntax": "generic"
           }
-        },
-        "useNodejsImportProtocol": "error"
+        }
       }
     }
   },
@@ -67,8 +64,8 @@
     "linter": {
       "enabled": true
     },
-    "assists": {
-      "enabled": true
+    "parser": {
+      "tailwindDirectives": true
     }
   }
 }

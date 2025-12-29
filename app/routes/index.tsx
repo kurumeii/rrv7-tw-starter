@@ -6,7 +6,7 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "ui"
-import type { Route } from "./+types/_home._index"
+import type { Route } from "./+types"
 
 export function meta(_: Route.MetaArgs) {
 	return [

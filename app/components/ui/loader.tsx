@@ -1,5 +1,5 @@
 import { RiLoader4Fill } from "@remixicon/react"
-import { type VariantProps, cva, cx } from "configs/cva.config"
+import { cva, cx, type VariantProps } from "configs/cva.config"
 import type { PropsWithChildren, SVGProps } from "react"
 
 const loaderStyle = cva({

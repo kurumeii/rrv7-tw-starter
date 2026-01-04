@@ -1,0 +1,16 @@
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      glob: "app/**/*.{ts,tsx,js,jsx}"
+      run: pnpm biome check --write {staged_files}
+    typecheck:
+      run: pnpm typecheck
+    spellcheck:
+      glob: "app/**/*.{ts,tsx,js,jsx}"
+      run: pnpm spellcheck
+
+pre-push:
+  commands:
+    build:
+      run: pnpm build

@@ -1,15 +1,15 @@
 import { RiLoader4Fill } from "@remixicon/react"
-import { cva, cx, type VariantProps } from "configs/cva.config"
-import type { PropsWithChildren, SVGProps } from "react"
+import { cx, tv, type VariantProps } from "configs/ui.config"
+import type { ComponentProps, PropsWithChildren } from "react"
 
-const loaderStyle = cva({
+const loaderStyle = tv({
 	base: "animate-spin text-current duration-1000",
 })
 
 type LoaderVariantsProps = VariantProps<typeof loaderStyle>
 
 type LoaderProps = PropsWithChildren<
-	LoaderVariantsProps & SVGProps<SVGSVGElement>
+	LoaderVariantsProps & ComponentProps<"svg">
 >
 
 export const Loader = ({ children, ...rest }: LoaderProps) => {

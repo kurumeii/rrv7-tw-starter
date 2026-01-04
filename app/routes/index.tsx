@@ -1,11 +1,3 @@
-import {
-	Button,
-	DialogContent,
-	DialogHeader,
-	DialogOverlay,
-	DialogTitle,
-	DialogTrigger,
-} from "ui"
 import type { Route } from "./+types"
 
 export function meta(_: Route.MetaArgs) {
@@ -27,22 +19,6 @@ export default function Home() {
 				<li>Tailwind CSS v4 + React aria components</li>
 				<li>Already has dark mode toggle setup</li>
 			</ul>
-			<br />
-			<div className='my-2'>
-				<h3 className='text-3xl'>Buttons</h3>
-				<div className='grid grid-flow-row grid-cols-3 gap-2'>
-					<DialogTrigger>
-						<Button>Open dialog</Button>
-						<DialogOverlay>
-							<DialogContent className='sm:max-w-[425px]'>
-								<DialogHeader>
-									<DialogTitle>Sign up</DialogTitle>
-								</DialogHeader>
-							</DialogContent>
-						</DialogOverlay>
-					</DialogTrigger>
-				</div>
-			</div>
 		</div>
 	)
 }

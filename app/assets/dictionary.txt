@@ -1,4 +1,5 @@
 Dismissable
 fontsource
+intosh
 isbot
 remixicon

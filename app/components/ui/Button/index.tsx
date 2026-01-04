@@ -1,16 +1,14 @@
-import { compose, cva, cx, type VariantProps } from "configs/cva.config"
-import type { ReactNode, Ref } from "react"
-import {
-	Button as ButtonPrimitive,
-	type ButtonProps as ButtonPrimitiveProps,
-} from "react-aria-components"
-import { Loader } from "./loader"
-import { composeRenderProps, focusButtonStyles } from "./primitives"
+import { cx, tv, type VariantProps } from "configs/ui.config"
+import type { ComponentProps, ReactNode, Ref } from "react"
+import * as RAC from "react-aria-components"
+import { Loader } from "../Loader"
+import { composeRenderProps, focusButtonStyles } from "../primitives"
 
-const _buttonStyles = cva({
+const buttonStyles = tv({
+	extend: focusButtonStyles,
 	base: [
 		"relative box-border inline-flex items-center justify-center gap-2 whitespace-nowrap text-pretty",
-		"rac-disabled:pointer-events-none rac-pressed:scale-95 cursor-pointer rac-disabled:cursor-default select-none rac-disabled:opacity-50",
+		"pressed:scale-95 cursor-pointer select-none disabled:pointer-events-none disabled:cursor-default disabled:opacity-50",
 		"*:data-[slot=icon]:pointer-events-none *:data-[slot=icon]:size-4 *:data-[slot=icon]:shrink-0",
 		"transition duration-300 ease-in-out",
 	],
@@ -18,13 +16,13 @@ const _buttonStyles = cva({
 		colors: {
 			primary: "bg-primary text-primary-foreground hover:bg-primary/80",
 			secondary:
-				"bg-secondary text-secondary-foreground rac-focus-visible:ring-secondary hover:bg-secondary/80",
+				"bg-secondary text-secondary-foreground hover:bg-secondary/80 focus-visible:ring-secondary",
 			warning:
-				"bg-warning text-warning-foreground rac-focus-visible:ring-warning hover:bg-warning/80",
+				"bg-warning text-warning-foreground hover:bg-warning/80 focus-visible:ring-warning",
 			success:
-				"bg-success text-success-foreground rac-focus-visible:ring-success hover:bg-success/80",
+				"bg-success text-success-foreground hover:bg-success/80 focus-visible:ring-success",
 			error:
-				"bg-error text-error-foreground rac-focus-visible:ring-error hover:bg-error/80",
+				"bg-error text-error-foreground hover:bg-error/80 focus-visible:ring-error",
 		},
 		variants: {
 			solid: "",
@@ -71,59 +69,54 @@ const _buttonStyles = cva({
 			variants: "outline",
 			colors: "primary",
 			className:
-				"border-primary rac-hover:bg-primary rac-hover:text-primary-foreground",
+				"border-primary hover:bg-primary hover:text-primary-foreground",
 		},
 		{
 			variants: "outline",
 			colors: "secondary",
-			className: "rac-hover:bg-secondary rac-hover:text-secondary-foreground",
+			className: "hover:bg-secondary hover:text-secondary-foreground",
 		},
 		{
 			variants: "outline",
 			colors: "warning",
 			className:
-				"border-warning rac-hover:bg-warning rac-hover:text-warning-foreground",
+				"border-warning hover:bg-warning hover:text-warning-foreground",
 		},
 		{
 			variants: "outline",
 			colors: "success",
 			className:
-				"border-success rac-hover:bg-success rac-hover:text-success-foreground",
+				"border-success hover:bg-success hover:text-success-foreground",
 		},
 		{
 			variants: "outline",
 			colors: "error",
-			className:
-				"border-error rac-hover:bg-error rac-hover:text-error-foreground",
+			className: "border-error hover:bg-error hover:text-error-foreground",
 		},
 		{
 			variants: "ghost",
 			colors: "primary",
-			className:
-				"rac-hover:bg-primary rac-hover:text-primary-foreground text-primary",
+			className: "text-primary hover:bg-primary hover:text-primary-foreground",
 		},
 		{
 			variants: "ghost",
 			colors: "secondary",
-			className: "rac-hover:bg-secondary rac-hover:text-secondary-foreground",
+			className: "hover:bg-secondary hover:text-secondary-foreground",
 		},
 		{
 			variants: "ghost",
 			colors: "warning",
-			className:
-				"rac-hover:bg-warning rac-hover:text-warning-foreground text-warning",
+			className: "text-warning hover:bg-warning hover:text-warning-foreground",
 		},
 		{
 			variants: "ghost",
 			colors: "success",
-			className:
-				"rac-hover:bg-success rac-hover:text-success-foreground text-success",
+			className: "text-success hover:bg-success hover:text-success-foreground",
 		},
 		{
 			variants: "ghost",
 			colors: "error",
-			className:
-				"rac-hover:bg-error rac-hover:text-error-foreground text-error",
+			className: "text-error hover:bg-error hover:text-error-foreground",
 		},
 	],
 	defaultVariants: {
@@ -135,10 +128,8 @@ const _buttonStyles = cva({
 	},
 })
 
-const buttonStyles = compose(focusButtonStyles, _buttonStyles)
-
 interface ButtonProps
-	extends ButtonPrimitiveProps,
+	extends ComponentProps<typeof RAC.Button>,
 		VariantProps<typeof buttonStyles> {
 	ref?: Ref<HTMLButtonElement>
 	leftIcon?: ReactNode
@@ -160,7 +151,7 @@ const Button = (props: ButtonProps) => {
 		...rest
 	} = props
 	return (
-		<ButtonPrimitive
+		<RAC.Button
 			{...rest}
 			className={composeRenderProps(className, (cls, renderProps) =>
 				buttonStyles({
@@ -195,7 +186,7 @@ const Button = (props: ButtonProps) => {
 					) : null}
 				</>
 			)}
-		</ButtonPrimitive>
+		</RAC.Button>
 	)
 }
 

@@ -1,10 +1,9 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 @import "@fontsource-variable/jetbrains-mono";
 @import "@fontsource-variable/montserrat";
-@plugin '@tailwindcss/typography';
-@plugin 'tailwindcss-react-aria-components' {
-	prefix: rac;
-}
+@plugin "@tailwindcss/typography";
+@plugin "tailwindcss-react-aria-components";
 
 @custom-variant dark (&:is(.dark *));
 

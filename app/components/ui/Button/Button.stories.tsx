@@ -1,13 +1,42 @@
 import type { Story, StoryDefault } from "@ladle/react"
 import { RiFileCheckLine, RiRocket2Fill, RiRocket2Line } from "@remixicon/react"
-import { Button } from "."
+import { Button, type ButtonProps } from "ui"
 
 export default {
 	title: "UI / Button",
 } satisfies StoryDefault
 
+// Use Pick to select only the props we want to control in the UI
+// This keeps the Controls panel clean while maintaining type safety
+type ButtonStoryProps = Pick<
+	ButtonProps,
+	| "variants"
+	| "colors"
+	| "size"
+	| "radius"
+	| "isPending"
+	| "isDisabled"
+	| "fullWidth"
+	| "isIcon"
+>
+
+export const Main: Story<ButtonStoryProps> = (args) => (
+	<Button {...args}>Button Label</Button>
+)
+
+Main.args = {
+	variants: "solid",
+	colors: "primary",
+	size: "md",
+	radius: "md",
+	isPending: false,
+	isDisabled: false,
+	fullWidth: false,
+	isIcon: false,
+}
+
 export const Variants: Story = () => (
-	<>
+	<div className='flex flex-wrap gap-4'>
 		<Button variants='solid'>Solid</Button>
 		<Button variants='outline'>Outline</Button>
 		<Button variants='ghost'>Ghost</Button>
@@ -15,38 +44,40 @@ export const Variants: Story = () => (
 		<Button colors='warning'>Warning</Button>
 		<Button colors='success'>Success</Button>
 		<Button colors='error'>Error</Button>
-	</>
+	</div>
 )
 
 export const Sizes: Story = () => (
-	<>
+	<div className='flex flex-wrap items-center gap-4'>
 		<Button size='sm'>Small</Button>
 		<Button size='md'>Medium</Button>
 		<Button size='lg'>Large</Button>
 		<Button size='xl'>Extra Large</Button>
-		<Button size='md' isIcon>
-			<RiFileCheckLine />
-		</Button>
-	</>
+	</div>
 )
 
-export const Disabled: Story = () => (
-	<>
+export const States: Story = () => (
+	<div className='flex flex-wrap gap-4'>
 		<Button isDisabled>Disabled</Button>
-		<Button variants='outline' isDisabled>
-			Disabled Outline
+		<Button isPending>Loading</Button>
+		<Button variants='outline' isPending>
+			Loading Outline
 		</Button>
-	</>
+	</div>
+)
+
+export const Icons: Story = () => (
+	<div className='flex flex-wrap gap-4'>
+		<Button leftIcon={<RiRocket2Fill />}>Left Icon</Button>
+		<Button rightIcon={<RiRocket2Line />}>Right Icon</Button>
+		<Button isIcon aria-label='Check'>
+			<RiFileCheckLine />
+		</Button>
+	</div>
 )
 
 export const Misc: Story = () => (
 	<>
 		<Button fullWidth>Full Width</Button>
-		<Button size='lg' leftIcon={<RiRocket2Fill />}>
-			With left icon
-		</Button>
-		<Button size='lg' rightIcon={<RiRocket2Line />}>
-			With right icon
-		</Button>
 	</>
 )

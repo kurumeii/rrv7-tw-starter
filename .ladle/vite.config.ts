@@ -5,9 +5,4 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [react(), tsconfigPaths(), tailwindcss()],
-  resolve: {
-    alias: {
-      ui: "/app/components/ui",
-    },
-  },
 });

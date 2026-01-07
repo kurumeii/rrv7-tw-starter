@@ -40,6 +40,7 @@
   - Trailing Commas: ES5
 - **Imports:** Organized automatically by Biome
   - Use absolute imports (e.g., `import { Button } from "ui"`)
+  - For react-aria-components, use `import * as RAC from 'react-aria-components'`
 
 ### Naming Conventions
 - **Components:** PascalCase (e.g., `Button`, `DialogContent`)

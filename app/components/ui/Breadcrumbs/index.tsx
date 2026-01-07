@@ -1,5 +1,6 @@
 "use client"
 import { RiArrowRightSLine } from "@remixicon/react"
+import { cx } from "configs/ui.config"
 import {
 	Breadcrumb as AriaBreadcrumb,
 	Breadcrumbs as AriaBreadcrumbs,
@@ -7,16 +8,12 @@ import {
 	type BreadcrumbsProps,
 	type LinkProps,
 } from "react-aria-components"
-import { twMerge } from "tailwind-merge"
 import { Link } from "~/components/ui/Link"
 import { composeTwRenderProps } from "~/components/ui/primitives"
 
 export function Breadcrumbs<T extends object>(props: BreadcrumbsProps<T>) {
 	return (
-		<AriaBreadcrumbs
-			{...props}
-			className={twMerge("flex gap-1", props.className)}
-		/>
+		<AriaBreadcrumbs {...props} className={cx("flex gap-1", props.className)} />
 	)
 }
 

@@ -18,13 +18,14 @@ type ButtonStoryProps = Pick<
 	| "isDisabled"
 	| "fullWidth"
 	| "isIcon"
->
+> & { children: string }
 
-export const Main: Story<ButtonStoryProps> = (args) => (
-	<Button {...args}>Button Label</Button>
-)
+export const Default: Story<ButtonStoryProps> = ({
+	children = "Button Label",
+	...args
+}) => <Button {...args}>{children}</Button>
 
-Main.args = {
+Default.args = {
 	variants: "solid",
 	colors: "primary",
 	size: "md",
@@ -33,6 +34,26 @@ Main.args = {
 	isDisabled: false,
 	fullWidth: false,
 	isIcon: false,
+	children: "Button Label",
+}
+
+Default.argTypes = {
+	variants: {
+		options: ["solid", "outline", "ghost"],
+		control: { type: "select" },
+	},
+	colors: {
+		options: ["primary", "secondary", "warning", "success", "error"],
+		control: { type: "select" },
+	},
+	size: {
+		options: ["sm", "md", "lg", "xl"],
+		control: { type: "select" },
+	},
+	radius: {
+		options: ["sm", "md", "lg", "full"],
+		control: { type: "select" },
+	},
 }
 
 export const Variants: Story = () => (

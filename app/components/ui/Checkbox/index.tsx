@@ -1,12 +1,11 @@
 "use client"
+
 import { RiCheckLine, RiSubtractLine } from "@remixicon/react"
-import {
-	Checkbox as AriaCheckbox,
-	type CheckboxProps,
-	composeRenderProps,
-} from "react-aria-components"
+import type { ReactNode } from "react"
+import * as RAC from "react-aria-components"
 import { tv } from "tailwind-variants"
-import { focusRing } from "~/components/ui/primitives"
+import { Description, FieldError, Label } from "~/components/ui/Field"
+import { composeTwRenderProps, focusRing } from "~/components/ui/primitives"
 
 const checkboxStyles = tv({
 	base: "group relative flex items-center gap-2 font-sans text-sm transition [-webkit-tap-highlight-color:transparent]",
@@ -39,15 +38,17 @@ const boxStyles = tv({
 const iconStyles =
 	"w-3.5 h-3.5 text-white group-disabled:text-neutral-400 dark:text-neutral-900 dark:group-disabled:text-neutral-600 forced-colors:text-[HighlightText]"
 
-export function Checkbox(props: CheckboxProps) {
+export function Checkbox(props: RAC.CheckboxProps) {
 	return (
-		<AriaCheckbox
+		<RAC.Checkbox
 			{...props}
-			className={composeRenderProps(props.className, (className, renderProps) =>
-				checkboxStyles({ ...renderProps, className })
+			className={RAC.composeRenderProps(
+				props.className,
+				(className, renderProps) =>
+					checkboxStyles({ ...renderProps, className })
 			)}
 		>
-			{composeRenderProps(
+			{RAC.composeRenderProps(
 				props.children,
 				(children, { isSelected, isIndeterminate, ...renderProps }) => (
 					<>
@@ -67,6 +68,31 @@ export function Checkbox(props: CheckboxProps) {
 					</>
 				)
 			)}
-		</AriaCheckbox>
+		</RAC.Checkbox>
+	)
+}
+
+export interface CheckboxGroupProps
+	extends Omit<RAC.CheckboxGroupProps, "children"> {
+	label?: string
+	children?: ReactNode
+	description?: string
+	errorMessage?: string | ((validation: RAC.ValidationResult) => string)
+}
+
+export function CheckboxGroup(props: CheckboxGroupProps) {
+	return (
+		<RAC.CheckboxGroup
+			{...props}
+			className={composeTwRenderProps(
+				props.className,
+				"flex flex-col gap-2 font-sans"
+			)}
+		>
+			<Label>{props.label}</Label>
+			{props.children}
+			{props.description && <Description>{props.description}</Description>}
+			<FieldError>{props.errorMessage}</FieldError>
+		</RAC.CheckboxGroup>
 	)
 }

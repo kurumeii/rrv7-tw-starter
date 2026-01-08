@@ -3,7 +3,7 @@ pre-commit:
   commands:
     lint:
       glob: "app/**/*.{ts,tsx,js,jsx}"
-      run: pnpm biome check --write {staged_files}
+      run: pnpm biome check --write {staged_files} && git add {staged_files}
     typecheck:
       run: pnpm typecheck
     spellcheck:

@@ -14,14 +14,14 @@ import {
 } from "react-aria-components"
 import { twMerge } from "tailwind-merge"
 import { tv } from "tailwind-variants"
-import { composeTwRenderProps, focusRing } from "~/components/ui/primitives"
+import { composeTwRenderProps, focusRing } from "ui"
 
 export function Label(props: LabelProps) {
 	return (
 		<RACLabel
 			{...props}
 			className={twMerge(
-				"w-fit cursor-default font-medium font-sans text-neutral-600 text-sm dark:text-neutral-300",
+				"w-fit cursor-default font-medium font-sans text-muted-foreground text-sm",
 				props.className
 			)}
 		/>
@@ -33,7 +33,7 @@ export function Description(props: TextProps) {
 		<Text
 			{...props}
 			slot='description'
-			className={twMerge("text-neutral-600 text-sm", props.className)}
+			className={twMerge("text-muted-foreground text-sm", props.className)}
 		/>
 	)
 }
@@ -44,7 +44,7 @@ export function FieldError(props: FieldErrorProps) {
 			{...props}
 			className={composeTwRenderProps(
 				props.className,
-				"text-red-600 text-sm forced-colors:text-[Mark]"
+				"text-error text-sm forced-colors:text-[Mark]"
 			)}
 		/>
 	)
@@ -55,21 +55,21 @@ export const fieldBorderStyles = tv({
 	variants: {
 		isFocusWithin: {
 			false:
-				"border-neutral-300 hover:border-neutral-400 dark:border-neutral-600 dark:hover:border-neutral-500 forced-colors:border-[ButtonBorder]",
-			true: "border-neutral-600 dark:border-neutral-300 forced-colors:border-[Highlight]",
+				"border-input hover:border-border forced-colors:border-[ButtonBorder]",
+			true: "border-ring forced-colors:border-[Highlight]",
 		},
 		isInvalid: {
-			true: "border-red-600 dark:border-red-600 forced-colors:border-[Mark]",
+			true: "border-error forced-colors:border-[Mark]",
 		},
 		isDisabled: {
-			true: "border-neutral-200 dark:border-neutral-700 forced-colors:border-[GrayText]",
+			true: "border-muted forced-colors:border-[GrayText]",
 		},
 	},
 })
 
 export const fieldGroupStyles = tv({
 	extend: focusRing,
-	base: "group box-border flex h-9 items-center overflow-hidden rounded-lg border bg-white transition dark:bg-neutral-900 forced-colors:bg-[Field]",
+	base: "group box-border flex h-9 items-center overflow-hidden rounded-lg border bg-background transition forced-colors:bg-[Field]",
 	variants: fieldBorderStyles.variants,
 })
 
@@ -90,7 +90,7 @@ export function Input(props: InputProps) {
 			{...props}
 			className={composeTwRenderProps(
 				props.className,
-				"min-h-9 min-w-0 flex-1 border-0 bg-white px-3 py-0 font-sans text-neutral-800 text-sm outline-0 [-webkit-tap-highlight-color:transparent] placeholder:text-neutral-600 disabled:text-neutral-200 disabled:placeholder:text-neutral-200 dark:bg-neutral-900 dark:text-neutral-200 dark:disabled:text-neutral-600 dark:placeholder:text-neutral-400 dark:disabled:placeholder:text-neutral-600"
+				"min-h-9 min-w-0 flex-1 border-0 bg-transparent px-3 py-0 font-sans text-foreground text-sm outline-0 [-webkit-tap-highlight-color:transparent] placeholder:text-muted-foreground disabled:text-muted-foreground/50"
 			)}
 		/>
 	)

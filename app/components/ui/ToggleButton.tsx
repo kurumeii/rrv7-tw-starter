@@ -5,19 +5,19 @@ import {
 	type ToggleButtonProps,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
-import { focusRing } from "~/components/ui/primitives"
+import { focusRing } from "ui"
 
 const styles = tv({
 	extend: focusRing,
-	base: "relative box-border inline-flex h-9 cursor-default items-center justify-center gap-2 rounded-lg border border-black/10 px-3.5 text-center font-sans text-sm transition forced-color-adjust-none [-webkit-tap-highlight-color:transparent] dark:border-white/10 [&:has(>svg:only-child)]:aspect-square [&:has(>svg:only-child)]:h-8 [&:has(>svg:only-child)]:px-0",
+	base: "relative box-border inline-flex h-9 cursor-default items-center justify-center gap-2 rounded-lg border border-border px-3.5 text-center font-sans text-sm transition [-webkit-tap-highlight-color:transparent] [&:has(>svg:only-child)]:aspect-square [&:has(>svg:only-child)]:h-8 [&:has(>svg:only-child)]:px-0",
 	variants: {
 		isSelected: {
 			false:
-				"bg-neutral-50 pressed:bg-neutral-200 text-neutral-800 hover:bg-neutral-100 dark:bg-neutral-700 dark:pressed:bg-neutral-500 dark:text-neutral-100 dark:hover:bg-neutral-600 forced-colors:bg-[ButtonFace]! forced-colors:text-[ButtonText]!",
-			true: "bg-neutral-700 pressed:bg-neutral-900 text-white hover:bg-neutral-800 dark:bg-neutral-300 dark:pressed:bg-neutral-100 dark:text-black dark:hover:bg-neutral-200 forced-colors:bg-[Highlight]! forced-colors:text-[HighlightText]!",
+				"bg-background pressed:bg-muted text-foreground hover:bg-muted/80 forced-colors:bg-[ButtonFace]! forced-colors:text-[ButtonText]!",
+			true: "bg-primary pressed:bg-primary/90 text-primary-foreground forced-colors:bg-[Highlight]! forced-colors:text-[HighlightText]!",
 		},
 		isDisabled: {
-			true: "border-transparent bg-neutral-100 text-neutral-300 dark:border-transparent dark:bg-neutral-800 dark:text-neutral-600 forced-colors:bg-[ButtonFace]! forced-colors:text-[GrayText]!",
+			true: "border-transparent bg-muted text-muted-foreground forced-colors:bg-[ButtonFace]! forced-colors:text-[GrayText]!",
 		},
 	},
 })

@@ -8,6 +8,7 @@ import {
 	type ListBoxItemProps,
 	type ValidationResult,
 } from "react-aria-components"
+import { composeTwRenderProps } from "ui"
 import {
 	Description,
 	FieldError,
@@ -22,7 +23,6 @@ import {
 	type DropdownSectionProps,
 } from "~/components/ui/ListBox"
 import { Popover } from "~/components/ui/Popover"
-import { composeTwRenderProps } from "~/components/ui/primitives"
 
 export interface ComboBoxProps<T extends object>
 	extends Omit<AriaComboBoxProps<T>, "children"> {

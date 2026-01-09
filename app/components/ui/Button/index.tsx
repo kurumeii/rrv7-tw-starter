@@ -1,8 +1,7 @@
 import { cx, tv, type VariantProps } from "configs/ui.config"
 import type { ComponentProps, ReactNode, Ref } from "react"
 import * as RAC from "react-aria-components"
-import { Loader } from "../Loader"
-import { composeRenderProps, focusButtonStyles } from "../primitives"
+import { focusButtonStyles, Loader } from "ui"
 
 const buttonStyles = tv({
 	extend: focusButtonStyles,
@@ -153,7 +152,7 @@ const Button = (props: ButtonProps) => {
 	return (
 		<RAC.Button
 			{...rest}
-			className={composeRenderProps(className, (cls, renderProps) =>
+			className={RAC.composeRenderProps(className, (cls, renderProps) =>
 				buttonStyles({
 					...renderProps,
 					variants,

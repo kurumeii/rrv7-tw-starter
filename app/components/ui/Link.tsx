@@ -3,17 +3,16 @@
 import { tv, type VariantProps } from "configs/ui.config"
 import type { ComponentProps } from "react"
 import * as RAC from "react-aria-components"
-import { composeRenderProps, focusRing } from "~/components/ui/primitives"
+import { focusRing } from "ui"
 
 const linkStyles = tv({
 	extend: focusRing,
 	base: "rounded-xs underline transition [-webkit-tap-highlight-color:transparent] disabled:cursor-default disabled:no-underline forced-colors:disabled:text-[GrayText]",
 	variants: {
 		variant: {
-			primary:
-				"text-blue-600 underline decoration-blue-600/60 hover:decoration-blue-600 dark:text-blue-500 dark:decoration-blue-500/60 dark:hover:decoration-blue-500",
+			primary: "text-primary decoration-primary/60 hover:decoration-primary",
 			secondary:
-				"text-muted-foreground underline decoration-muted-foreground/50 hover:decoration-muted-foreground",
+				"text-secondary decoration-secondary/50 hover:decoration-secondary",
 		},
 	},
 	defaultVariants: {
@@ -30,7 +29,7 @@ const Link = (props: LinkProps) => {
 	return (
 		<RAC.Link
 			{...rest}
-			className={composeRenderProps(className, (cls, renderProps) =>
+			className={RAC.composeRenderProps(className, (cls, renderProps) =>
 				linkStyles({ ...renderProps, className: cls, variant })
 			)}
 		/>

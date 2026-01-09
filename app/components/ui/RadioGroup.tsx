@@ -9,8 +9,8 @@ import {
 	type ValidationResult,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
+import { composeTwRenderProps, focusRing } from "ui"
 import { Description, FieldError, Label } from "~/components/ui/Field"
-import { composeTwRenderProps, focusRing } from "~/components/ui/primitives"
 
 export interface RadioGroupProps extends Omit<RACRadioGroupProps, "children"> {
 	label?: string
@@ -40,18 +40,17 @@ export function RadioGroup(props: RadioGroupProps) {
 
 const styles = tv({
 	extend: focusRing,
-	base: "box-border h-4.5 w-4.5 rounded-full border bg-white transition-all dark:bg-neutral-900",
+	base: "box-border h-4.5 w-4.5 rounded-full border bg-background transition-all",
 	variants: {
 		isSelected: {
-			false:
-				"border-neutral-400 group-pressed:border-neutral-500 dark:border-neutral-400 dark:group-pressed:border-neutral-300",
-			true: "border-[calc(var(--spacing)*1.5)] border-neutral-700 group-pressed:border-neutral-800 dark:border-neutral-300 dark:group-pressed:border-neutral-200 forced-colors:border-[Highlight]!",
+			false: "border-border group-pressed:border-input",
+			true: "border-[calc(var(--spacing)*1.5)] border-primary group-pressed:border-primary/90 forced-colors:border-[Highlight]!",
 		},
 		isInvalid: {
-			true: "border-red-700 group-pressed:border-red-800 dark:border-red-600 dark:group-pressed:border-red-700 forced-colors:border-[Mark]!",
+			true: "border-error group-pressed:border-error forced-colors:border-[Mark]!",
 		},
 		isDisabled: {
-			true: "border-neutral-200 dark:border-neutral-700 forced-colors:border-[GrayText]!",
+			true: "border-muted forced-colors:border-[GrayText]!",
 		},
 	},
 })
@@ -62,7 +61,7 @@ export function Radio(props: RadioProps) {
 			{...props}
 			className={composeTwRenderProps(
 				props.className,
-				"group relative flex items-center gap-2 text-neutral-800 text-sm transition [-webkit-tap-highlight-color:transparent] disabled:text-neutral-300 dark:text-neutral-200 dark:disabled:text-neutral-600 forced-colors:disabled:text-[GrayText]"
+				"group relative flex items-center gap-2 text-foreground text-sm transition [-webkit-tap-highlight-color:transparent] disabled:text-muted-foreground forced-colors:disabled:text-[GrayText]"
 			)}
 		>
 			{composeRenderProps(props.children, (children, renderProps) => (

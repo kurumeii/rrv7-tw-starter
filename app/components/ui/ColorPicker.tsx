@@ -7,17 +7,17 @@ import {
 	DialogTrigger,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
+import { focusRing } from "ui"
 import { ColorArea } from "~/components/ui/ColorArea"
 import { ColorField } from "~/components/ui/ColorField"
 import { ColorSlider } from "~/components/ui/ColorSlider"
 import { ColorSwatch } from "~/components/ui/ColorSwatch"
 import { Dialog } from "~/components/ui/Dialog"
 import { Popover } from "~/components/ui/Popover"
-import { focusRing } from "~/components/ui/primitives"
 
 const buttonStyles = tv({
 	extend: focusRing,
-	base: "flex cursor-default items-center gap-2 rounded-xs border-0 bg-transparent font-sans text-neutral-800 text-sm [-webkit-tap-highlight-color:transparent] dark:text-neutral-200",
+	base: "flex cursor-default items-center gap-2 rounded-xs border-0 bg-transparent font-sans text-foreground text-sm [-webkit-tap-highlight-color:transparent]",
 })
 
 export interface ColorPickerProps

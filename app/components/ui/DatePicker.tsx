@@ -6,6 +6,7 @@ import {
 	type DateValue,
 	type ValidationResult,
 } from "react-aria-components"
+import { composeTwRenderProps } from "ui"
 import { Calendar } from "~/components/ui/Calendar"
 import { DateInput } from "~/components/ui/DateField"
 import {
@@ -16,7 +17,6 @@ import {
 } from "~/components/ui/Field"
 import { FieldButton } from "~/components/ui/FieldButton"
 import { Popover } from "~/components/ui/Popover"
-import { composeTwRenderProps } from "~/components/ui/primitives"
 
 export interface DatePickerProps<T extends DateValue>
 	extends AriaDatePickerProps<T> {

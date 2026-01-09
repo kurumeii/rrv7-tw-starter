@@ -7,8 +7,8 @@ import {
 	composeRenderProps,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
+import { focusRing } from "ui"
 import { ColorSwatch } from "~/components/ui/ColorSwatch"
-import { focusRing } from "~/components/ui/primitives"
 
 const pickerStyles = tv({
 	base: "flex gap-1",

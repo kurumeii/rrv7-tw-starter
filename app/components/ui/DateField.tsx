@@ -9,13 +9,13 @@ import {
 	type ValidationResult,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
+import { composeTwRenderProps } from "ui"
 import {
 	Description,
 	FieldError,
 	fieldGroupStyles,
 	Label,
 } from "~/components/ui/Field"
-import { composeTwRenderProps } from "~/components/ui/primitives"
 
 export interface DateFieldProps<T extends DateValue>
 	extends AriaDateFieldProps<T> {
@@ -44,16 +44,16 @@ export function DateField<T extends DateValue>({
 }
 
 const segmentStyles = tv({
-	base: "inline whitespace-nowrap rounded-xs p-0.5 type-literal:p-0 text-neutral-800 caret-transparent outline forced-color-adjust-none [-webkit-tap-highlight-color:transparent] dark:text-neutral-200 forced-colors:text-[ButtonText]",
+	base: "inline whitespace-nowrap rounded-xs p-0.5 type-literal:p-0 text-foreground caret-transparent outline forced-color-adjust-none [-webkit-tap-highlight-color:transparent] forced-colors:text-[ButtonText]",
 	variants: {
 		isPlaceholder: {
-			true: "text-neutral-600 dark:text-neutral-400",
+			true: "text-muted-foreground",
 		},
 		isDisabled: {
-			true: "text-neutral-200 dark:text-neutral-600 forced-colors:text-[GrayText]",
+			true: "text-muted-foreground/50 forced-colors:text-[GrayText]",
 		},
 		isFocused: {
-			true: "bg-blue-600 text-white dark:text-white forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]",
+			true: "bg-primary text-primary-foreground forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]",
 		},
 	},
 })

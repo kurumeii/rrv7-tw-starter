@@ -17,7 +17,7 @@
 ### Tech Stack
 - **Framework:** React Router v7 (with SSR enabled)
 - **Language:** TypeScript
-- **Styling:** Tailwind CSS v4, `cva` for component variants, `tailwind-merge`
+- **Styling:** Tailwind CSS v4, `tv` for component variants, `tailwind-merge`
 - **UI Components:** `react-aria-components` for accessible primitives
 - **Icons:** `@remixicon/react`
 - **Theme Management:** `remix-themes` (Dark/Light mode support)
@@ -41,6 +41,7 @@
 - **Imports:** Organized automatically by Biome
   - Use absolute imports (e.g., `import { Button } from "ui"`)
   - For react-aria-components, use `import * as RAC from 'react-aria-components'`
+  - For tailwind-variants, use `import { tv } from 'app/configs/ui.config'`
 
 ### Naming Conventions
 - **Components:** PascalCase (e.g., `Button`, `DialogContent`)
@@ -50,14 +51,10 @@
 ### Component Structure
 - **Functional Components:** Prefer functional components with hooks
 - **Props:** Use `ComponentProps` (e.g., `ComponentProps<typeof RAC.Button>`)
-- **Styling:** 
-  - Use `cva` for defining component variants
+- **Styling:**
+	- Use `tv` from `app/configs/ui.config` for defining component variants
   - Use `composeRenderProps` and `cx` for merging classes in `react-aria-components`
   - Inline Tailwind classes for one-off styling in routes/pages
-
-### Accessibility
-- Use `react-aria-components` primitives to ensure accessibility
-- Always use `import * as RAC` for `react-aria-components`
 
 ## Development Commands
 

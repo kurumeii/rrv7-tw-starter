@@ -1,42 +1,48 @@
 "use client"
 
 import { RiCheckLine, RiSubtractLine } from "@remixicon/react"
+import { tv } from "configs/ui.config"
 import type { ReactNode } from "react"
 import * as RAC from "react-aria-components"
-import { tv } from "tailwind-variants"
-import { Description, FieldError, Label } from "~/components/ui/Field"
-import { composeTwRenderProps, focusRing } from "~/components/ui/primitives"
+import {
+	composeTwRenderProps,
+	Description,
+	FieldError,
+	focusRing,
+	Label,
+} from "ui"
 
 const checkboxStyles = tv({
 	base: "group relative flex items-center gap-2 font-sans text-sm transition [-webkit-tap-highlight-color:transparent]",
 	variants: {
 		isDisabled: {
-			false: "text-neutral-800 dark:text-neutral-200",
-			true: "text-neutral-300 dark:text-neutral-600 forced-colors:text-[GrayText]",
+			false: "text-foreground",
+			true: "text-foreground forced-colors:text-[GrayText]",
 		},
 	},
 })
 
 const boxStyles = tv({
 	extend: focusRing,
-	base: "box-border flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded-sm border transition",
+	base: "box-border flex size-4.5 shrink-0 items-center justify-center rounded-sm border transition",
 	variants: {
 		isSelected: {
 			false:
-				"border-(--color) bg-white [--color:var(--color-neutral-400)] dark:bg-neutral-900 group-pressed:[--color:var(--color-neutral-500)] dark:[--color:var(--color-neutral-400)] dark:group-pressed:[--color:var(--color-neutral-300)]",
-			true: "border-(--color) bg-(--color) [--color:var(--color-neutral-700)] group-pressed:[--color:var(--color-neutral-800)] dark:[--color:var(--color-neutral-300)] dark:group-pressed:[--color:var(--color-neutral-200)] forced-colors:[--color:Highlight]!",
+				"border-(--color) bg-background [--color:var(--color-border)] group-pressed:[--color:var(--color-input)]",
+			true: "border-(--color) bg-(--color) [--color:var(--color-primary)] group-pressed:[--color:var(--color-primary)] forced-colors:[--color:Highlight]!",
 		},
 		isInvalid: {
-			true: "[--color:var(--color-red-700)] group-pressed:[--color:var(--color-red-800)] dark:[--color:var(--color-red-600)] dark:group-pressed:[--color:var(--color-red-700)] forced-colors:[--color:Mark]!",
+			true: "[--color:var(--color-error)] group-pressed:[--color:var(--color-error)] forced-colors:[--color:Mark]!",
 		},
 		isDisabled: {
-			true: "[--color:var(--color-neutral-200)] dark:[--color:var(--color-neutral-700)] forced-colors:[--color:GrayText]!",
+			true: "[--color:var(--color-muted)] forced-colors:[--color:GrayText]!",
 		},
 	},
 })
 
-const iconStyles =
-	"w-3.5 h-3.5 text-white group-disabled:text-neutral-400 dark:text-neutral-900 dark:group-disabled:text-neutral-600 forced-colors:text-[HighlightText]"
+const iconStyles = tv({
+	base: "size-3.5 text-primary-foreground group-invalid:text-error-foreground group-disabled:text-muted-foreground forced-colors:text-[HighlightText]",
+})
 
 export function Checkbox(props: RAC.CheckboxProps) {
 	return (
@@ -59,9 +65,9 @@ export function Checkbox(props: RAC.CheckboxProps) {
 							})}
 						>
 							{isIndeterminate ? (
-								<RiSubtractLine aria-hidden className={iconStyles} />
+								<RiSubtractLine aria-hidden className={iconStyles()} />
 							) : isSelected ? (
-								<RiCheckLine aria-hidden className={iconStyles} />
+								<RiCheckLine aria-hidden className={iconStyles()} />
 							) : null}
 						</div>
 						{children}

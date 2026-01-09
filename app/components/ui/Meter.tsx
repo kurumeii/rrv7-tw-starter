@@ -4,8 +4,8 @@ import {
 	Meter as AriaMeter,
 	type MeterProps as AriaMeterProps,
 } from "react-aria-components"
+import { composeTwRenderProps } from "ui"
 import { Label } from "~/components/ui/Field"
-import { composeTwRenderProps } from "~/components/ui/primitives"
 
 export interface MeterProps extends AriaMeterProps {
 	label?: string
@@ -25,7 +25,7 @@ export function Meter({ label, ...props }: MeterProps) {
 					<div className='flex justify-between gap-2'>
 						<Label>{label}</Label>
 						<span
-							className={`text-sm ${percentage >= 80 ? "text-red-600 dark:text-red-500" : "text-neutral-600 dark:text-neutral-400"}`}
+							className={`text-sm ${percentage >= 80 ? "text-error" : "text-muted-foreground"}`}
 						>
 							{percentage >= 80 && (
 								<RiAlertLine
@@ -36,7 +36,7 @@ export function Meter({ label, ...props }: MeterProps) {
 							{` ${valueText}`}
 						</span>
 					</div>
-					<div className='relative h-2 w-64 max-w-full rounded-full bg-neutral-300 outline-1 outline-transparent -outline-offset-1 dark:bg-neutral-700'>
+					<div className='relative h-2 w-64 max-w-full rounded-full bg-muted outline-1 outline-transparent -outline-offset-1'>
 						<div
 							className={`absolute top-0 left-0 h-full rounded-full ${getColor(percentage)} forced-colors:bg-[Highlight]`}
 							style={{ width: `${percentage}%` }}
@@ -50,12 +50,12 @@ export function Meter({ label, ...props }: MeterProps) {
 
 function getColor(percentage: number) {
 	if (percentage < 70) {
-		return "bg-green-600"
+		return "bg-success"
 	}
 
 	if (percentage < 80) {
-		return "bg-orange-500"
+		return "bg-warning"
 	}
 
-	return "bg-red-600"
+	return "bg-error"
 }

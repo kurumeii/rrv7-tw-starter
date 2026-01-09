@@ -7,8 +7,8 @@ import {
 	SliderTrack,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
+import { composeTwRenderProps, focusRing } from "ui"
 import { Label } from "~/components/ui/Field"
-import { composeTwRenderProps, focusRing } from "~/components/ui/primitives"
 
 const trackStyles = tv({
 	base: "rounded-full",
@@ -18,9 +18,8 @@ const trackStyles = tv({
 			vertical: "ml-[50%] h-full w-1.5 -translate-x-[50%]",
 		},
 		isDisabled: {
-			false:
-				"bg-neutral-300 dark:bg-neutral-700 forced-colors:bg-[ButtonBorder]",
-			true: "bg-neutral-200 dark:bg-neutral-800 forced-colors:bg-[ButtonBorder]",
+			false: "bg-muted forced-colors:bg-[ButtonBorder]",
+			true: "opacity-50 forced-colors:bg-[ButtonBorder]",
 		},
 	},
 })
@@ -34,21 +33,21 @@ const fillStyles = tv({
 				"bottom-(--start,0) ml-[50%] h-(--size) w-1.5 -translate-x-[50%]",
 		},
 		isDisabled: {
-			false: "bg-blue-500 forced-colors:bg-[Highlight]",
-			true: "bg-neutral-300 dark:bg-neutral-600 forced-colors:bg-[GrayText]",
+			false: "bg-primary forced-colors:bg-[Highlight]",
+			true: "opacity-50 forced-colors:bg-[GrayText]",
 		},
 	},
 })
 
 const thumbStyles = tv({
 	extend: focusRing,
-	base: "h-4.5 w-4.5 rounded-full border border-neutral-700 bg-neutral-50 group-orientation-horizontal:mt-5 group-orientation-vertical:ml-2.5 dark:border-neutral-300 dark:bg-neutral-900",
+	base: "h-4.5 w-4.5 rounded-full border border-border bg-background group-orientation-horizontal:mt-5 group-orientation-vertical:ml-2.5",
 	variants: {
 		isDragging: {
-			true: "bg-neutral-700 dark:bg-neutral-300 forced-colors:bg-[ButtonBorder]",
+			true: "bg-primary forced-colors:bg-[ButtonBorder]",
 		},
 		isDisabled: {
-			true: "border-neutral-300 dark:border-neutral-700 forced-colors:border-[GrayText]",
+			true: "opacity-50 forced-colors:border-[GrayText]",
 		},
 	},
 })
@@ -72,7 +71,7 @@ export function Slider<T extends number | Array<number>>({
 			)}
 		>
 			<Label>{label}</Label>
-			<SliderOutput className='orientation-vertical:hidden text-neutral-500 text-sm dark:text-neutral-400'>
+			<SliderOutput className='orientation-vertical:hidden text-muted-foreground text-sm'>
 				{({ state }) =>
 					state.values
 						.map((_value, i) => state.getThumbValueLabel(i))

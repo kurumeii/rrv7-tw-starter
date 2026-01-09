@@ -6,6 +6,7 @@ import {
 	type DateValue,
 	type ValidationResult,
 } from "react-aria-components"
+import { composeTwRenderProps } from "ui"
 import { DateInput } from "~/components/ui/DateField"
 import {
 	Description,
@@ -15,7 +16,6 @@ import {
 } from "~/components/ui/Field"
 import { FieldButton } from "~/components/ui/FieldButton"
 import { Popover } from "~/components/ui/Popover"
-import { composeTwRenderProps } from "~/components/ui/primitives"
 import { RangeCalendar } from "~/components/ui/RangeCalendar"
 
 export interface DateRangePickerProps<T extends DateValue>
@@ -45,7 +45,7 @@ export function DateRangePicker<T extends DateValue>({
 					<DateInput slot='start' className='ps-3 pe-2 text-sm' />
 					<span
 						aria-hidden='true'
-						className='text-neutral-800 group-disabled:text-neutral-200 dark:text-neutral-200 dark:group-disabled:text-neutral-600 forced-colors:text-[ButtonText] forced-colors:group-disabled:text-[GrayText]'
+						className='text-foreground group-disabled:opacity-50 forced-colors:text-[ButtonText] forced-colors:group-disabled:text-[GrayText]'
 					>
 						–
 					</span>

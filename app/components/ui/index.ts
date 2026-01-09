@@ -1,3 +1,8 @@
+export {
+	composeTwRenderProps,
+	focusButtonStyles,
+	focusRing,
+} from "configs/ui.config"
 export * from "./AlertDialog"
 export * from "./Breadcrumbs"
 export * from "./Button"
@@ -32,7 +37,6 @@ export * from "./Modal"
 export * from "./NumberField"
 export * from "./Popover"
 export * from "./ProgressBar"
-export * from "./primitives"
 export * from "./RadioGroup"
 export * from "./RangeCalendar"
 export * from "./SearchField"

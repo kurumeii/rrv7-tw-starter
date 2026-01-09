@@ -14,16 +14,15 @@ import {
 } from "react-aria-components"
 import { twMerge } from "tailwind-merge"
 import { tv } from "tailwind-variants"
+import { focusRing } from "ui"
 import { Description, Label } from "~/components/ui/Field"
-import { focusRing } from "~/components/ui/primitives"
 
 const colors = {
-	gray: "bg-white text-neutral-600 border-neutral-200 hover:border-neutral-300 dark:bg-neutral-900 dark:text-neutral-300 dark:border-neutral-600 dark:hover:border-neutral-500",
-	green:
-		"bg-green-100 text-green-700 border-green-200 hover:border-green-300 dark:bg-green-300/20 dark:text-green-400 dark:border-green-300/10 dark:hover:border-green-300/20",
+	gray: "bg-background text-muted-foreground border-border hover:border-input",
+	green: "bg-success/10 text-success border-success/20 hover:border-success/30",
 	yellow:
-		"bg-yellow-100 text-yellow-700 border-yellow-200 hover:border-yellow-300 dark:bg-yellow-300/20 dark:text-yellow-400 dark:border-yellow-300/10 dark:hover:border-yellow-300/20",
-	blue: "bg-blue-100 text-blue-700 border-blue-200 hover:border-blue-300 dark:bg-blue-400/20 dark:text-blue-300 dark:border-blue-400/10 dark:hover:border-blue-400/20",
+		"bg-warning/10 text-warning border-warning/20 hover:border-warning/30",
+	blue: "bg-primary/10 text-primary border-primary/20 hover:border-primary/30",
 }
 
 type Color = keyof typeof colors
@@ -43,10 +42,10 @@ const tagStyles = tv({
 			true: "pr-1",
 		},
 		isSelected: {
-			true: "border-transparent bg-blue-600 text-white forced-color-adjust-none forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]",
+			true: "border-transparent bg-primary text-primary-foreground forced-color-adjust-none forced-colors:bg-[Highlight] forced-colors:text-[HighlightText]",
 		},
 		isDisabled: {
-			true: "bg-neutral-100 text-neutral-300 dark:border-white/20 dark:bg-transparent dark:text-neutral-600 forced-colors:text-[GrayText]",
+			true: "opacity-50 forced-colors:text-[GrayText]",
 		},
 	},
 	compoundVariants: (Object.keys(colors) as Array<Color>).map((color) => ({
@@ -96,7 +95,7 @@ export function TagGroup<T extends object>({
 			</ColorContext.Provider>
 			{description && <Description>{description}</Description>}
 			{errorMessage && (
-				<Text slot='errorMessage' className='text-red-600 text-sm'>
+				<Text slot='errorMessage' className='text-error text-sm'>
 					{errorMessage}
 				</Text>
 			)}
@@ -106,7 +105,7 @@ export function TagGroup<T extends object>({
 
 const removeButtonStyles = tv({
 	extend: focusRing,
-	base: "flex cursor-default items-center justify-center rounded-full border-0 bg-transparent pressed:bg-black/20 p-0.5 text-inherit transition-[background-color] hover:bg-black/10 dark:pressed:bg-white/20 dark:hover:bg-white/10",
+	base: "flex cursor-default items-center justify-center rounded-full border-0 bg-transparent pressed:bg-muted p-0.5 text-inherit transition-[background-color] hover:bg-muted/80",
 })
 
 export function Tag({ children, color, ...props }: TagProps) {

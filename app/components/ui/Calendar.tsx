@@ -14,20 +14,19 @@ import {
 	useLocale,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
+import { composeTwRenderProps, focusRing } from "ui"
 import { Button } from "~/components/ui/Button"
-import { composeTwRenderProps, focusRing } from "~/components/ui/primitives"
 
 const cellStyles = tv({
 	extend: focusRing,
 	base: "flex aspect-square w-[calc(100cqw/7)] cursor-default items-center justify-center rounded-full text-sm forced-color-adjust-none [-webkit-tap-highlight-color:transparent]",
 	variants: {
 		isSelected: {
-			false:
-				"pressed:bg-neutral-300 text-neutral-900 hover:bg-neutral-200 dark:pressed:bg-neutral-600 dark:text-neutral-200 dark:hover:bg-neutral-700",
-			true: "bg-blue-600 text-white invalid:bg-red-600 forced-colors:bg-[Highlight] forced-colors:text-[HighlightText] forced-colors:invalid:bg-[Mark]",
+			false: "pressed:bg-muted text-foreground hover:bg-muted/80",
+			true: "bg-primary text-primary-foreground invalid:bg-error forced-colors:bg-[Highlight] forced-colors:text-[HighlightText] forced-colors:invalid:bg-[Mark]",
 		},
 		isDisabled: {
-			true: "text-neutral-300 dark:text-neutral-600 forced-colors:text-[GrayText]",
+			true: "text-muted-foreground forced-colors:text-[GrayText]",
 		},
 	},
 })
@@ -57,7 +56,7 @@ export function Calendar<T extends DateValue>({
 				</CalendarGridBody>
 			</CalendarGrid>
 			{errorMessage && (
-				<Text slot='errorMessage' className='text-red-600 text-sm'>
+				<Text slot='errorMessage' className='text-error text-sm'>
 					{errorMessage}
 				</Text>
 			)}
@@ -77,7 +76,7 @@ export function CalendarHeader() {
 					<RiArrowLeftSLine aria-hidden size={18} />
 				)}
 			</Button>
-			<Heading className='mx-2 my-0 flex-1 text-center font-sans font-semibold text-base text-neutral-900 [font-variation-settings:normal] dark:text-neutral-200' />
+			<Heading className='mx-2 my-0 flex-1 text-center font-sans font-semibold text-base text-foreground [font-variation-settings:normal]' />
 			<Button variants='ghost' slot='next'>
 				{direction === "rtl" ? (
 					<RiArrowLeftSLine aria-hidden size={18} />
@@ -93,7 +92,7 @@ export function CalendarGridHeader() {
 	return (
 		<AriaCalendarGridHeader>
 			{(day) => (
-				<CalendarHeaderCell className='font-semibold text-neutral-500 text-xs'>
+				<CalendarHeaderCell className='font-semibold text-muted-foreground text-xs'>
 					{day}
 				</CalendarHeaderCell>
 			)}

@@ -23,8 +23,8 @@ import {
 } from "react-aria-components"
 import { twMerge } from "tailwind-merge"
 import { tv } from "tailwind-variants"
+import { composeTwRenderProps, focusRing } from "ui"
 import { Checkbox } from "~/components/ui/Checkbox"
-import { composeTwRenderProps, focusRing } from "~/components/ui/primitives"
 
 interface TableProps extends Omit<AriaTableProps, "className"> {
 	className?: string
@@ -35,7 +35,7 @@ export function Table(props: TableProps) {
 		<ResizableTableContainer
 			onScroll={props.onScroll}
 			className={twMerge(
-				"relative box-border max-h-80 w-full scroll-pt-[2.281rem] overflow-auto rounded-lg border border-neutral-300 bg-white font-sans dark:border-neutral-700 dark:bg-neutral-900",
+				"relative box-border max-h-80 w-full scroll-pt-[2.281rem] overflow-auto rounded-lg border border-border bg-background font-sans",
 				props.className
 			)}
 		>
@@ -54,7 +54,7 @@ const columnStyles = tv({
 
 const resizerStyles = tv({
 	extend: focusRing,
-	base: "box-content h-5 resizing:w-[2px] w-px translate-x-[8px] cursor-col-resize rounded-xs bg-neutral-400 resizing:bg-blue-600 bg-clip-content px-[8px] py-1 resizing:pl-[7px] -outline-offset-2 dark:bg-neutral-500 forced-colors:bg-[ButtonBorder] forced-colors:resizing:bg-[Highlight]",
+	base: "box-content h-5 resizing:w-[2px] w-px translate-x-[8px] cursor-col-resize rounded-xs bg-muted resizing:bg-primary bg-clip-content px-[8px] py-1 resizing:pl-[7px] -outline-offset-2 forced-colors:bg-[ButtonBorder] forced-colors:resizing:bg-[Highlight]",
 })
 
 export function Column(props: ColumnProps) {
@@ -63,7 +63,7 @@ export function Column(props: ColumnProps) {
 			{...props}
 			className={composeTwRenderProps(
 				props.className,
-				"box-border h-1 cursor-default text-start font-semibold text-neutral-700 text-sm focus-within:z-20 dark:text-neutral-300 [&:hover]:z-20"
+				"box-border h-1 cursor-default text-start font-semibold text-foreground text-sm focus-within:z-20 [&:hover]:z-20"
 			)}
 		>
 			{composeRenderProps(
@@ -81,7 +81,7 @@ export function Column(props: ColumnProps) {
 									{sortDirection && (
 										<RiArrowUpLine
 											aria-hidden
-											className='h-4 w-4 text-neutral-500 dark:text-neutral-400 forced-colors:text-[ButtonText]'
+											className='h-4 w-4 text-muted-foreground forced-colors:text-[ButtonText]'
 										/>
 									)}
 								</span>
@@ -103,7 +103,7 @@ export function TableHeader<T extends object>(props: TableHeaderProps<T>) {
 			{...props}
 			className={composeTwRenderProps(
 				props.className,
-				"sticky top-0 z-10 rounded-t-lg border-b border-b-neutral-200 bg-neutral-100/60 backdrop-blur-md supports-[-moz-appearance:none]:bg-neutral-100 dark:border-b-neutral-700 dark:bg-neutral-700/60 dark:supports-[-moz-appearance:none]:bg-neutral-700 forced-colors:bg-[Canvas]"
+				"sticky top-0 z-10 rounded-t-lg border-border border-b bg-muted/60 backdrop-blur-md forced-colors:bg-[Canvas]"
 			)}
 		>
 			{/* Add extra columns for drag and drop and selection. */}
@@ -133,7 +133,7 @@ export function TableBody<T extends object>(props: TableBodyProps<T>) {
 
 const rowStyles = tv({
 	extend: focusRing,
-	base: "group/row relative cursor-default select-none pressed:bg-neutral-100 selected:bg-blue-100 selected:pressed:bg-blue-200 text-neutral-900 text-sm -outline-offset-2 last:rounded-b-lg hover:bg-neutral-100 selected:hover:bg-blue-200 disabled:text-neutral-300 dark:pressed:bg-neutral-800 dark:selected:bg-blue-700/30 dark:selected:pressed:bg-blue-700/40 dark:text-neutral-200 dark:disabled:text-neutral-600 dark:hover:bg-neutral-800 dark:selected:hover:bg-blue-700/40",
+	base: "group/row relative cursor-default select-none pressed:bg-muted selected:bg-primary/10 selected:pressed:bg-primary/20 text-foreground text-sm -outline-offset-2 last:rounded-b-lg hover:bg-muted selected:hover:bg-primary/20 disabled:text-muted-foreground forced-colors:selected:bg-[Highlight] forced-colors:selected:text-[HighlightText]",
 })
 
 export function Row<T extends object>({
@@ -163,7 +163,7 @@ export function Row<T extends object>({
 
 const cellStyles = tv({
 	extend: focusRing,
-	base: "box-border truncate border-b border-b-neutral-200 p-2 -outline-offset-2 [--selected-border:var(--color-blue-200)] [-webkit-tap-highlight-color:transparent] group-last/row:border-b-0 group-last/row:last:rounded-br-lg group-last/row:first:rounded-bl-lg group-selected/row:border-(--selected-border) dark:border-b-neutral-700 dark:[--selected-border:var(--color-blue-900)] [:is(:has(+[data-selected])_*)]:border-(--selected-border)",
+	base: "box-border truncate border-border border-b p-2 -outline-offset-2 [--selected-border:var(--color-primary)] [-webkit-tap-highlight-color:transparent] group-last/row:border-b-0 group-last/row:last:rounded-br-lg group-last/row:first:rounded-bl-lg group-selected/row:border-(--selected-border) [:is(:has(+[data-selected])_*)]:border-(--selected-border)",
 })
 
 export function Cell(props: CellProps) {

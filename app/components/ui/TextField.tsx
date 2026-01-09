@@ -5,6 +5,7 @@ import {
 	type ValidationResult,
 } from "react-aria-components"
 import { tv } from "tailwind-variants"
+import { composeTwRenderProps, focusRing } from "ui"
 import {
 	Description,
 	FieldError,
@@ -12,7 +13,6 @@ import {
 	Input,
 	Label,
 } from "~/components/ui/Field"
-import { composeTwRenderProps, focusRing } from "~/components/ui/primitives"
 
 const inputStyles = tv({
 	extend: focusRing,

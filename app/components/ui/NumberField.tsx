@@ -7,6 +7,7 @@ import {
 	type ButtonProps,
 	type ValidationResult,
 } from "react-aria-components"
+import { composeTwRenderProps } from "ui"
 import {
 	Description,
 	FieldError,
@@ -15,7 +16,6 @@ import {
 	Input,
 	Label,
 } from "~/components/ui/Field"
-import { composeTwRenderProps } from "~/components/ui/primitives"
 
 export interface NumberFieldProps extends AriaNumberFieldProps {
 	label?: string
@@ -76,7 +76,7 @@ function StepperButton(props: ButtonProps) {
 	return (
 		<Button
 			{...props}
-			className='box-border flex flex-1 cursor-default border-0 bg-transparent pressed:bg-neutral-100 px-0.5 py-0 text-neutral-500 [-webkit-tap-highlight-color:transparent] group-disabled:text-neutral-200 dark:pressed:bg-neutral-800 dark:text-neutral-400 dark:group-disabled:text-neutral-600 forced-colors:group-disabled:text-[GrayText]'
+			className='box-border flex flex-1 cursor-default border-0 bg-transparent pressed:bg-muted px-0.5 py-0 text-muted-foreground [-webkit-tap-highlight-color:transparent] group-disabled:opacity-50 forced-colors:group-disabled:text-[GrayText]'
 		/>
 	)
 }

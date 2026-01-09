@@ -7,13 +7,13 @@ import {
 import { tv } from "tailwind-variants"
 
 const dropZone = tv({
-	base: "flex min-h-24 w-[30%] items-center justify-center text-balance rounded-lg border border-neutral-300 bg-white p-8 text-center font-sans text-base dark:border-neutral-800 dark:bg-neutral-900",
+	base: "flex min-h-24 w-[30%] items-center justify-center text-balance rounded-lg border border-border bg-background p-8 text-center font-sans text-base",
 	variants: {
 		isFocusVisible: {
-			true: "outline-2 outline-blue-600 -outline-offset-1 dark:outline-blue-500 forced-colors:outline-[Highlight]",
+			true: "outline-2 outline-ring -outline-offset-1 forced-colors:outline-[Highlight]",
 		},
 		isDropTarget: {
-			true: "bg-blue-200 outline-2 outline-blue-600 -outline-offset-1 dark:bg-blue-800 dark:outline-blue-500 forced-colors:outline-[Highlight]",
+			true: "bg-primary/20 outline-2 outline-primary -outline-offset-1 forced-colors:outline-[Highlight]",
 		},
 	},
 })

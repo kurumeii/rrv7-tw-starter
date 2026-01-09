@@ -5,6 +5,7 @@ import {
 	type SearchFieldProps as AriaSearchFieldProps,
 	type ValidationResult,
 } from "react-aria-components"
+import { composeTwRenderProps } from "ui"
 import {
 	Description,
 	FieldError,
@@ -13,7 +14,6 @@ import {
 	Label,
 } from "~/components/ui/Field"
 import { FieldButton } from "~/components/ui/FieldButton"
-import { composeTwRenderProps } from "~/components/ui/primitives"
 
 export interface SearchFieldProps extends AriaSearchFieldProps {
 	label?: string
@@ -41,7 +41,7 @@ export function SearchField({
 			<FieldGroup>
 				<RiSearchLine
 					aria-hidden
-					className='ml-2 h-4 w-4 text-neutral-500 group-disabled:text-neutral-200 dark:text-neutral-400 dark:group-disabled:text-neutral-600 forced-colors:text-[ButtonText] forced-colors:group-disabled:text-[GrayText]'
+					className='ml-2 h-4 w-4 text-muted-foreground group-disabled:opacity-50 forced-colors:text-[ButtonText] forced-colors:group-disabled:text-[GrayText]'
 				/>
 				<Input
 					placeholder={placeholder}

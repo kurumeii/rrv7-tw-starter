@@ -66,12 +66,7 @@ export function MenuItem(props: MenuItemProps) {
 }
 
 export function MenuSeparator(props: SeparatorProps) {
-	return (
-		<Separator
-			{...props}
-			className='mx-3 my-1 border-neutral-300 border-b dark:border-neutral-700'
-		/>
-	)
+	return <Separator {...props} className='mx-3 my-1 border-border border-b' />
 }
 
 export interface MenuSectionProps<T> extends AriaMenuSectionProps<T> {
@@ -86,7 +81,7 @@ export function MenuSection<T extends object>(props: MenuSectionProps<T>) {
 			className="after:block after:h-1.25 after:content-[''] first:-mt-1.25"
 		>
 			{props.title && (
-				<Header className='sticky -top-1.25 z-10 -mx-1 -mt-px truncate border-y border-y-neutral-200 bg-neutral-100/60 px-4 py-1 font-semibold text-neutral-500 text-sm backdrop-blur-md supports-[-moz-appearance:none]:bg-neutral-100 dark:border-y-neutral-700 dark:bg-neutral-700/60 dark:text-neutral-300 [&+*]:mt-1'>
+				<Header className='sticky -top-1.25 z-10 -mx-1 -mt-px truncate border-y border-y-border bg-muted/60 px-4 py-1 font-semibold text-muted-foreground text-sm backdrop-blur-md [&+*]:mt-1'>
 					{props.title}
 				</Header>
 			)}

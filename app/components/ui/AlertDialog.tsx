@@ -35,7 +35,7 @@ export function AlertDialog({
 						{title}
 					</Heading>
 					<div
-						className={`absolute top-6 right-6 h-6 w-6 stroke-2 ${variant === "destructive" ? "text-red-500" : "text-blue-500"}`}
+						className={`absolute top-6 right-6 h-6 w-6 stroke-2 ${variant === "destructive" ? "text-error" : "text-primary"}`}
 					>
 						{variant === "destructive" ? (
 							<RiErrorWarningLine aria-hidden />
@@ -43,9 +43,7 @@ export function AlertDialog({
 							<RiInformationLine aria-hidden />
 						)}
 					</div>
-					<p className='mt-3 text-neutral-500 dark:text-neutral-400'>
-						{children}
-					</p>
+					<p className='mt-3 text-muted-foreground'>{children}</p>
 					<div className='mt-6 flex justify-end gap-2'>
 						<Button variants='outline' colors='secondary' onPress={close}>
 							{cancelLabel || "Cancel"}

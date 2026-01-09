@@ -3,7 +3,7 @@ import {
 	ColorSwatch as AriaColorSwatch,
 	type ColorSwatchProps,
 } from "react-aria-components"
-import { composeTwRenderProps } from "~/components/ui/primitives"
+import { composeTwRenderProps } from "ui"
 
 export function ColorSwatch(props: ColorSwatchProps) {
 	return (

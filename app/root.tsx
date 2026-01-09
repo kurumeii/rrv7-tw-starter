@@ -12,7 +12,7 @@ import {
 import { PreventFlashOnWrongTheme, ThemeProvider } from "remix-themes"
 import { themeResolver } from "server/themes.server"
 import type { Route } from "./+types/root"
-import stylesheet from "./app.css?url"
+import stylesheet from "./global.css?url"
 
 export const links: Route.LinksFunction = () => [
 	{ rel: "stylesheet", href: stylesheet },

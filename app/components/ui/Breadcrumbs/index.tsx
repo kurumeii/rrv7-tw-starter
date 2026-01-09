@@ -1,41 +1,34 @@
 "use client"
+
 import { RiArrowRightSLine } from "@remixicon/react"
 import { cx } from "configs/ui.config"
-import {
-	Breadcrumb as AriaBreadcrumb,
-	Breadcrumbs as AriaBreadcrumbs,
-	type BreadcrumbProps,
-	type BreadcrumbsProps,
-	type LinkProps,
-} from "react-aria-components"
+import type { ComponentProps } from "react"
+import * as RAC from "react-aria-components"
 import { Link } from "~/components/ui/Link"
 import { composeTwRenderProps } from "~/components/ui/primitives"
 
-export function Breadcrumbs<T extends object>(props: BreadcrumbsProps<T>) {
+export function Breadcrumbs<T extends object>(props: RAC.BreadcrumbsProps<T>) {
 	return (
-		<AriaBreadcrumbs {...props} className={cx("flex gap-1", props.className)} />
+		<RAC.Breadcrumbs {...props} className={cx("flex gap-1", props.className)} />
 	)
 }
 
-export function Breadcrumb(
-	props: BreadcrumbProps & Omit<LinkProps, "className">
-) {
+export function Breadcrumb({
+	className,
+	...props
+}: RAC.BreadcrumbProps & Omit<ComponentProps<typeof Link>, "className">) {
 	return (
-		<AriaBreadcrumb
-			{...props}
-			className={composeTwRenderProps(
-				props.className,
-				"flex items-center gap-1"
-			)}
+		<RAC.Breadcrumb
+			className={composeTwRenderProps(className, "flex items-center gap-1")}
 		>
-			{({ isCurrent }) => (
+			{(renderProps) => (
 				<>
 					<Link variant='secondary' {...props} />
-					{!isCurrent && (
-						<RiArrowRightSLine className='h-3 w-3 text-neutral-600 dark:text-neutral-400' />
+					{!renderProps.isCurrent && (
+						<RiArrowRightSLine className='size-3 text-muted-foreground' />
 					)}
 				</>
 			)}
-		</AriaBreadcrumb>
+		</RAC.Breadcrumb>
 	)
 }

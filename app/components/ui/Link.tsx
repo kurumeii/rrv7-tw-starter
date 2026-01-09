@@ -1,17 +1,11 @@
 "use client"
-import {
-	Link as AriaLink,
-	type LinkProps as AriaLinkProps,
-	composeRenderProps,
-} from "react-aria-components"
-import { tv } from "tailwind-variants"
-import { focusRing } from "~/components/ui/primitives"
 
-interface LinkProps extends AriaLinkProps {
-	variant?: "primary" | "secondary"
-}
+import { tv, type VariantProps } from "configs/ui.config"
+import type { ComponentProps } from "react"
+import * as RAC from "react-aria-components"
+import { composeRenderProps, focusRing } from "~/components/ui/primitives"
 
-const styles = tv({
+const linkStyles = tv({
 	extend: focusRing,
 	base: "rounded-xs underline transition [-webkit-tap-highlight-color:transparent] disabled:cursor-default disabled:no-underline forced-colors:disabled:text-[GrayText]",
 	variants: {
@@ -19,7 +13,7 @@ const styles = tv({
 			primary:
 				"text-blue-600 underline decoration-blue-600/60 hover:decoration-blue-600 dark:text-blue-500 dark:decoration-blue-500/60 dark:hover:decoration-blue-500",
 			secondary:
-				"text-neutral-700 underline decoration-neutral-700/50 hover:decoration-neutral-700 dark:text-neutral-300 dark:decoration-neutral-300/70 dark:hover:decoration-neutral-300",
+				"text-muted-foreground underline decoration-muted-foreground/50 hover:decoration-muted-foreground",
 		},
 	},
 	defaultVariants: {
@@ -27,13 +21,20 @@ const styles = tv({
 	},
 })
 
-export function Link(props: LinkProps) {
+interface LinkProps
+	extends ComponentProps<typeof RAC.Link>,
+		VariantProps<typeof linkStyles> {}
+
+const Link = (props: LinkProps) => {
+	const { variant, className, ...rest } = props
 	return (
-		<AriaLink
-			{...props}
-			className={composeRenderProps(props.className, (className, renderProps) =>
-				styles({ ...renderProps, className, variant: props.variant })
+		<RAC.Link
+			{...rest}
+			className={composeRenderProps(className, (cls, renderProps) =>
+				linkStyles({ ...renderProps, className: cls, variant })
 			)}
 		/>
 	)
 }
+
+export { linkStyles, type LinkProps, Link }

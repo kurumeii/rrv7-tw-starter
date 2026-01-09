@@ -96,9 +96,3 @@ export const Icons: Story = () => (
 		</Button>
 	</div>
 )
-
-export const Misc: Story = () => (
-	<>
-		<Button fullWidth>Full Width</Button>
-	</>
-)

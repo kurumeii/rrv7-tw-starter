@@ -1,3 +1,4 @@
+import { Button } from "ui"
 import type { Route } from "./+types"
 
 export function meta(_: Route.MetaArgs) {
@@ -19,6 +20,31 @@ export default function Home() {
 				<li>Tailwind CSS v4 + React aria components</li>
 				<li>Already has dark mode toggle setup</li>
 			</ul>
+			<br />
+			<div className='flex flex-wrap gap-4'>
+				<Button>Primary Solid</Button>
+				<Button variants='solid' colors='secondary'>
+					Secondary Solid
+				</Button>
+				<Button variants='outline' colors='primary'>
+					Primary Outline
+				</Button>
+				<Button variants='outline' colors='secondary'>
+					Secondary Outline
+				</Button>
+				<Button variants='ghost' colors='warning'>
+					Warning Ghost
+				</Button>
+				<Button variants='solid' colors='success'>
+					Success Solid
+				</Button>
+				<Button variants='solid' colors='error'>
+					Error Solid
+				</Button>
+				<Button size='sm'>Small</Button>
+				<Button size='lg'>Large</Button>
+				<Button size='xl'>Extra Large</Button>
+			</div>
 		</div>
 	)
 }

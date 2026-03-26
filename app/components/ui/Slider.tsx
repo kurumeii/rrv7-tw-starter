@@ -1,4 +1,3 @@
-"use client"
 import {
 	Slider as AriaSlider,
 	type SliderProps as AriaSliderProps,
@@ -29,7 +28,7 @@ const fillStyles = tv({
 	base: "absolute rounded-full",
 	variants: {
 		orientation: {
-			horizontal: "start-(--start,0) h-1.5 w-(--size)",
+			horizontal: "inset-s-(--start,0) h-1.5 w-(--size)",
 			vertical:
 				"bottom-(--start,0) ml-[50%] h-(--size) w-1.5 -translate-x-[50%]",
 		},
@@ -110,7 +109,7 @@ export function Slider<T extends number | Array<number>>({
 						) : null}
 						{state.values.map((value, i) => (
 							<SliderThumb
-								key={`thumb-${i}-${value}`}
+								key={`thumb-${value}`}
 								index={i}
 								aria-label={thumbLabels?.[i]}
 								className={thumbStyles}

@@ -139,6 +139,7 @@ const DialogDescription = ({
 	/>
 )
 
+export type { DialogContentProps }
 export {
 	Dialog,
 	DialogContent,
@@ -149,4 +150,3 @@ export {
 	DialogTitle,
 	DialogTrigger,
 }
-export type { DialogContentProps }

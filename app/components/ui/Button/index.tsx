@@ -190,4 +190,4 @@ const Button = (props: ButtonProps) => {
 	)
 }
 
-export { buttonStyles, type ButtonProps, Button }
+export { Button, type ButtonProps, buttonStyles }
